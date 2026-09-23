@@ -1,0 +1,14 @@
+{
+  "institucion": "SEMAR",
+  "paciente": {
+    "curpPaciente": "GOML850101HDFMRR09",
+    "nombre": "JUAN",
+    "primerApellido": "GOMEZ",
+    "segundoApellido": "LOPEZ",
+    "fechaNacimiento": "1985-01-01",
+    "genero": "Masculino",
+    "numAfiliacion": "12345678901",
+    "numExpediente": "EXP-SEMAR-2024-00441",
+    "calidadAsegurado": "PENSIONADO"
+  }
+}
