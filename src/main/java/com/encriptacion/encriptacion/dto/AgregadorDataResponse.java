@@ -3,7 +3,6 @@ package com.encriptacion.encriptacion.dto;
 import java.util.List;
 import lombok.Builder;
 import lombok.Getter;
-import tools.jackson.databind.JsonNode;
 
 @Getter
 @Builder
@@ -27,5 +26,5 @@ public class AgregadorDataResponse {
 
     private List<String> institucionesFallidas;
 
-    private List<JsonNode> responses;
+    private List<EncryptedResponseDto> responses;
 }

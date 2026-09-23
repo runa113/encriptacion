@@ -37,4 +37,6 @@ public class ExpedienteClinicoRequestDto {
      * Public key de la petición que realiza la solicitud.
      */
     private String publicKey;
+
+    private String requester;
 }

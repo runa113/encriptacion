@@ -15,17 +15,16 @@ import tools.jackson.databind.JsonNode;
 import java.util.List;
 
 @RestController
-@RequestMapping("/exp")
+@RequestMapping("/expedientes")
 @RequiredArgsConstructor
 public class ExpedienteController {
 
     private final ExpedienteService expedienteService;
 
-    @GetMapping("/instituciones")
     @PostMapping("/instituciones")
     public ResponseEntity<AgregadorResponse> obtenerExpedientes(
             @RequestBody ExpedienteClinicoRequestDto request
-    ) {
+    ) throws Exception {
 
         AgregadorResponse response =
                 expedienteService.obtenerExpedientes(request);
