@@ -9,6 +9,7 @@ import com.encriptacion.encriptacion.dto.AgregadorResponse;
 import com.encriptacion.encriptacion.dto.EncryptedResponseDto;
 import com.encriptacion.encriptacion.dto.ExpedienteClinicoRequestDto;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.bouncycastle.crypto.params.X25519PublicKeyParameters;
 import org.springframework.stereotype.Service;
 import tools.jackson.databind.JsonNode;
@@ -26,6 +27,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class ExpedienteService {
@@ -44,6 +46,11 @@ public class ExpedienteService {
         byte[] requesterPublicKeyBytes =
                 Base64.getDecoder()
                         .decode(request.getPublicKey());
+
+        log.info(
+                "PUBLIC KEY length: {}",
+                requesterPublicKeyBytes.length
+        );
 
         JsonNode sedena =
                 leerJson("/expedientes/sedena.json");
@@ -82,6 +89,16 @@ public class ExpedienteService {
             String ctBase64 =
                     Base64.getEncoder()
                             .encodeToString(envelope.ct());
+
+            log.info("======================================");
+            log.info("RID: {}", envelope.rid());
+            log.info("SRC: {}", envelope.src());
+            log.info("TS: {}", envelope.ts());
+            log.info("ENC length: {}", envelope.enc().length);
+            log.info("CT length: {}", envelope.ct().length);
+            log.info("ENC Base64: {}", encBase64);
+            log.info("CT Base64: {}", ctBase64);
+            log.info("======================================");
 
             EncryptedResponseDto encryptedResponse =
                     EncryptedResponseDto.builder()
